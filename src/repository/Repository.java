@@ -11,7 +11,7 @@ import java.util.List;
  * @author Natalija
  */
 public interface Repository<T, K> {
-    //sve genericke metode za sve objekte
+    //sve generičke metode za sve objekte
     List<T> getAll(T t, String uslov) throws Exception;
     void add(T t) throws Exception;
     void edit(T t) throws Exception;

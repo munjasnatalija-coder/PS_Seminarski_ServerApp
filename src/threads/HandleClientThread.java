@@ -10,10 +10,11 @@ import communication.Response;
 import communication.ResponseType;
 import communication.Sender;
 import controller.Controller;
+import domain.Kupac;
 import domain.Zaposleni;
 import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -50,6 +51,8 @@ public class HandleClientThread extends Thread{
             switch (request.getOperation()) {
                 case LOGIN:
                     return login(request);
+                case UCIATAJ_KUPCE:
+                    return ucitajKupce();
                     
             default:
                 throw new AssertionError();
@@ -69,11 +72,27 @@ public class HandleClientThread extends Thread{
         Zaposleni trazenZaposleni = (Zaposleni) request.getArgument();
         
         try {
-        Zaposleni z = Controller.getInstance().login(trazenZaposleni);
-        response.setResponseType(ResponseType.SUCCESS);
-        response.setObject(z);
-        System.out.println("Uspesna prijava na sistem...");
-        zaposleni = z;
+            Zaposleni z = Controller.getInstance().login(trazenZaposleni);
+            response.setResponseType(ResponseType.SUCCESS);
+            response.setObject(z);
+            System.out.println("Uspesna prijava na sistem...");
+            zaposleni = z;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            response.setResponseType(ResponseType.ERROR);
+            response.setException(ex);
+        }
+        return response;
+    }
+
+    private Response ucitajKupce() {
+        Response response = new Response();
+     
+        try {
+            List<Kupac> kupci = Controller.getInstance().ucitajKupce();
+            response.setResponseType(ResponseType.SUCCESS);
+            response.setObject(kupci);
+            System.out.println("Uspesna prijava na sistem...");
         } catch (Exception ex) {
             ex.printStackTrace();
             response.setResponseType(ResponseType.ERROR);

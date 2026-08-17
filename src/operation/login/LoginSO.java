@@ -16,7 +16,7 @@ public class LoginSO extends AbstractSO {
     private Zaposleni zaposleni;
 
     public Zaposleni getZaposleni() {
-        return zaposleni = null;
+        return zaposleni;
     }
 
     @Override
@@ -27,20 +27,18 @@ public class LoginSO extends AbstractSO {
     @Override
     protected void executeOperation(Object param, String kljuc) throws Exception {
         List<Zaposleni> sviZaposleni = repository.getAll((Zaposleni)param, null);
-        System.out.println("Klasa LoginSII "+sviZaposleni);
+        System.out.println("Klasa LoginSO: "+sviZaposleni);
         
-        if(sviZaposleni.contains((Zaposleni)param)){
-            for (Zaposleni z : sviZaposleni) {
-                if(z.equals((Zaposleni)param)){
-                    zaposleni = z;
-                    System.out.println(z);
-                    return;
-                }
+        for (Zaposleni z : sviZaposleni) {
+            if(z.equals((Zaposleni)param)){
+                zaposleni = z;
+                System.out.println(z);
+                return;
             }
         }
-            zaposleni = null;
+        
+        zaposleni = null;
     }
 
-    
     
 }

@@ -77,7 +77,21 @@ public class DbRepositoryGeneric implements DbRepository<GenericEntity, Long> {
 
     @Override
     public List<GenericEntity> getAll() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//        List<GenericEntity> lista = new ArrayList<>();
+//        GenericEntity param =
+//        String upit = "SELECT * FROM "+param.getTableName();
+//        System.out.println(upit);
+//        
+//        Connection connection = DbConnectionFactory.getInstance().getConnection();
+//        Statement st = connection.createStatement();
+//        ResultSet rs = st.executeQuery(upit);
+//        lista = param.getList(rs);
+//        
+//        rs.close();
+//        st.close();
+//        
+//        return lista;
+        return null;
     }
 
     @Override

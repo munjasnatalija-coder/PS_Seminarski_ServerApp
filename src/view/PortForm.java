@@ -33,6 +33,7 @@ public class PortForm extends javax.swing.JFrame {
         btnSacuvaj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Unesite broj port-a");
 
         jLabel1.setText("Port");
 
@@ -48,13 +49,13 @@ public class PortForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
+                .addGap(32, 32, 32)
                 .addComponent(txtPort, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addGap(63, 63, 63)
                 .addComponent(btnSacuvaj)
-                .addGap(26, 26, 26))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,18 +80,18 @@ public class PortForm extends javax.swing.JFrame {
              port = Integer.parseInt(txtPort.getText());
              
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Port mora da bude broj!", "Greska", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Port mora da bude broj!", "Greška", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
         if(port >=0 && port <=65535){
             konfiguracija.Konfiguracija.getInstance().setProperty("port", port+"");
             konfiguracija.Konfiguracija.getInstance().sacuvajIzmene();
-            JOptionPane.showMessageDialog(this, "Broj porta je sacuvan!", "Uspesno", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Broj porta je sačuvan!", "Uspešno", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         }
         else{
-            JOptionPane.showMessageDialog(this, "Broj porta nije u odgovarajucem formatu!", "Greska", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Broj porta nije u odgovarajućem formatu!", "Greška", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSacuvajActionPerformed
 

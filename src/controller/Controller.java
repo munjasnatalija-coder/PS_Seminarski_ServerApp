@@ -4,7 +4,10 @@
  */
 package controller;
 
+import domain.Kupac;
 import domain.Zaposleni;
+import java.util.List;
+import operation.kupac.UcitajKupceSO;
 import operation.login.LoginSO;
 
 /**
@@ -26,7 +29,14 @@ public class Controller {
     public Zaposleni login(Zaposleni trazenZaposleni) throws Exception {
         LoginSO operacija = new LoginSO();
         operacija.execute(trazenZaposleni, null);
-        System.out.println("Klasa kontroler server"+operacija.getZaposleni());
+        System.out.println("Klasa kontroler server:"+operacija.getZaposleni());
         return operacija.getZaposleni();
+    }
+
+    public List<Kupac> ucitajKupce() throws Exception {
+        UcitajKupceSO operacija = new UcitajKupceSO();
+        operacija.execute(new Kupac(), null);
+        System.out.println("Klasa kontroler server: "+operacija.getKupci());
+        return operacija.getKupci();
     }
 }

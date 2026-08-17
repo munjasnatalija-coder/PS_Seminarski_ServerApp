@@ -4,10 +4,9 @@
  */
 package repository.db;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.*;
-import java.util.Properties;
+import konfiguracija.Konfiguracija;
 
 
 /**
@@ -30,19 +29,17 @@ public class DbConnectionFactory {
     public Connection getConnection() throws SQLException,IOException{
         if(connection == null || connection.isClosed()){
             try {
-                Properties properties = new Properties();
-                properties.load(new FileInputStream("config/properties.properties"));
-                
-                String url = properties.getProperty("url");
-                String user = properties.getProperty("user");
-                String password = properties.getProperty("password");
+                String url = Konfiguracija.getInstance().getProperty("url");
+                String user = Konfiguracija.getInstance().getProperty("user");
+                String password = Konfiguracija.getInstance().getProperty("password");
                 
                 connection = DriverManager.getConnection(url, user, password);
                 connection.setAutoCommit(false);
 
             } catch (SQLException e) {
-                System.out.println("Neuspesno uspotavljena konekcia!\n"+e.getMessage());
+                System.out.println("Neuspešno uspotavljena konekcija!\n"+e.getMessage());
                 e.printStackTrace();
+                throw e;
             }
         }
         return connection;

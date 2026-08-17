@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package operation;
-import java.sql.SQLException;
 import repository.Repository;
 import repository.db.impl.DbRepositoryGeneric;
 import repository.db.DbRepository;
@@ -29,6 +28,7 @@ public abstract class AbstractSO {
         } catch (Exception exception) {
             System.out.println("Greska kod cuvanja proizvoda!!!");
             rollbackTransaction();
+            throw exception;
         }
     }
 
