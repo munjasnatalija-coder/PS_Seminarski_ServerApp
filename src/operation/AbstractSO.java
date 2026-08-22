@@ -21,14 +21,13 @@ public abstract class AbstractSO {
     public void execute(Object param, String kljuc) throws Exception {
         try {
             precondition(param);
-            startTransaction();
             executeOperation(param, kljuc);
             comitTransaction();
             System.out.println("Uspesno izvrsena operacija!!!");
-        } catch (Exception exception) {
+        } catch (Exception e) {
             System.out.println("Greska kod cuvanja proizvoda!!!");
             rollbackTransaction();
-            throw exception;
+            throw e;
         }
     }
 

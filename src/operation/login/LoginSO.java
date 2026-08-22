@@ -13,7 +13,7 @@ import operation.AbstractSO;
  * @author Natalija
  */
 public class LoginSO extends AbstractSO {
-    private Zaposleni zaposleni;
+    private Zaposleni zaposleni = null;
 
     public Zaposleni getZaposleni() {
         return zaposleni;
@@ -28,16 +28,17 @@ public class LoginSO extends AbstractSO {
     protected void executeOperation(Object param, String kljuc) throws Exception {
         List<Zaposleni> sviZaposleni = repository.getAll((Zaposleni)param, null);
         System.out.println("Klasa LoginSO: "+sviZaposleni);
-        
         for (Zaposleni z : sviZaposleni) {
             if(z.equals((Zaposleni)param)){
                 zaposleni = z;
-                System.out.println(z);
+                System.out.println("Zaposleni :"+z);
+                System.out.println("NASAO LOGIN");
                 return;
             }
         }
         
         zaposleni = null;
+        System.out.println("ZAPOSLENI: "+zaposleni);
     }
 
     

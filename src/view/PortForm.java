@@ -17,6 +17,7 @@ public class PortForm extends javax.swing.JFrame {
      */
     public PortForm() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

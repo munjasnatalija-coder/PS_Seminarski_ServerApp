@@ -21,8 +21,8 @@ public class DbRepositoryGeneric implements DbRepository<GenericEntity, Long> {
     public List<GenericEntity> getAll(GenericEntity param, String uslov) throws Exception {
         List<GenericEntity> lista = new ArrayList<>();
         
-        String upit = "SELECT * FROM "+param.getTableName();
-        if(uslov != null) //***
+        String upit = param.getSelectQuery();
+        if(uslov != null)
             upit +=uslov;
         System.out.println(upit);
         

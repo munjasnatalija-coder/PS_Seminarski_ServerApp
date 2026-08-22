@@ -17,6 +17,7 @@ public class BazaForm extends javax.swing.JFrame {
      */
     public BazaForm() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
